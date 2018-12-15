@@ -1,0 +1,21 @@
+.navbar{
+    display: flex;
+    padding-top: 1.5rem;
+    justify-content: space-around;
+
+    animation: navbarAnimation 3s;
+    animation-fill-mode: forwards;
+
+    a{
+        color: $text-dark-2;
+        text-decoration: none;
+        font-weight: bold;
+
+        i{
+            opacity: 0;
+            animation: iconAnimation 1s;
+            animation-delay: 3s;
+            animation-fill-mode: forwards;
+        }
+    }
+}

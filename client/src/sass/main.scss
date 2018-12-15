@@ -12,6 +12,7 @@ html,body{
     font-size: 100%;
     vertical-align: baseline;
     background: transparent;
+    overflow: hidden;
 }
 
 $primary-1: #FF7A36;
@@ -29,6 +30,7 @@ $text-dark-1: rgb(41, 41, 41);
 $text-dark-2:rgb(63, 63, 63);
 $text-dark-3:rgb(94, 94, 94);
 
+@import "animations";
 @import "navbar";
 @import "pages/landing";
 @import "pages/page-layout";
