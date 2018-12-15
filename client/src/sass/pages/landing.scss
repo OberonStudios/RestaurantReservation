@@ -1,0 +1,13 @@
+.homePage{
+    min-height: 100vh;
+    background: linear-gradient(to bottom, $primary-1, $primary-5);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    &__text{
+        color: $text-dark-1;
+        h3{
+            font-size: 5em;
+        }
+    }
+}
