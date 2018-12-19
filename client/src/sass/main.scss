@@ -1,7 +1,7 @@
 html,body{
     padding: 0;
     margin: 0;
-    font-family: cursive;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 * {
@@ -15,11 +15,11 @@ html,body{
     overflow: hidden;
 }
 
-$primary-1: #FF7A36;
-$primary-2: #E88326;
-$primary-3: #E84B26;
-$primary-4: #FFAD29;
-$primary-5: #FF3329;
+$primary-1: rgb(255, 29, 86);
+$primary-2: rgb(218, 65, 111);
+$primary-3: rgb(175, 240, 159);
+$primary-4: rgb(121, 204, 153);
+$primary-5: rgb(59, 119, 82);
 
 //===TEXT COLORS===
 $text-1: rgb(190, 190, 190);
