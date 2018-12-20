@@ -4,10 +4,18 @@
     background-repeat: no-repeat;
     display: flex;
 
+    @media only screen and (max-width: 900px) {
+        flex-direction: column;
+    }
+
     &__images{
         display: flex;
         flex-direction: column;
         width: 85%;
+
+        @media only screen and (max-width: 900px) {
+            width: 100%;
+        }
 
         img{
             width: 100%;
@@ -25,18 +33,33 @@
                 font-size: 5em;
                 z-index: 10;
                 color: $text-dark-1;
+
+                @media only screen and (max-width: 900px) {
+                    font-size: 3.5em;
+                }
             }
             p{
                 font-size: 1.5em;
                 z-index: 10;
                 color: $text-dark-3;
+
+                @media only screen and (max-width: 900px) {
+                    font-size: 1em;
+                }
             }
 
             img{
                 position: absolute;
-                bottom: 40%;
+                bottom: 30%;
                 left: 60%;
                 width: 40%;
+                height: 80%;
+                filter: contrast(125%);
+
+                @media only screen and (max-width: 900px) {
+                    top: 20%;
+                    height: 50%;
+                }
             }
         }
 

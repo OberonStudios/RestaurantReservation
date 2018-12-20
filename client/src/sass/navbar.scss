@@ -8,12 +8,27 @@
     animation: navbarAnimation 3s;
     animation-fill-mode: forwards;
 
+    @media only screen and (max-width: 900px) {
+        flex-direction: row;
+        width: 100%;
+        padding: 0;
+    }
+
     a{
         color: $text-dark-2;
         text-decoration: none;
         font-weight: bold;
         padding: 1.5rem;
         transition: .2s all;
+
+        @media only screen and (max-width: 900px) {
+            padding: .75rem;
+            font-size: 1em;
+        }
+
+        @media only screen and (max-width: 600px) {
+            font-size: .75em;
+        }
 
         &:hover{
             background: linear-gradient(to top left, $primary-1, $primary-2);
