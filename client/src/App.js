@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Landing from './components/Landing';
+import MenuPage from './components/MenuPage';
 import Login from './components/login';
 import Profile from './components/profile';
 import {BrowserRouter,Route} from 'react-router-dom';
@@ -18,6 +19,7 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Route exact path='/' component={Landing} />
+            <Route exact path='/menu' component={MenuPage} />
             <Route exact path='/login' component={Login} />
             <Route exact path='/profile' component={Profile} />
           </div>
