@@ -3,6 +3,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
+    width: 100%;
 
     @media only screen and (max-width: 900px) {
         flex-direction: column;
@@ -11,7 +12,7 @@
     &__images{
         display: flex;
         flex-direction: column;
-        width: 85%;
+        width: 100%;
 
         @media only screen and (max-width: 900px) {
             width: 100%;

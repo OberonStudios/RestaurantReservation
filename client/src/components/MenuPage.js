@@ -4,7 +4,7 @@ export default class MenuPage extends Component {
   render() {
     return (
       <div>
-
+        tttt
       </div>
     )
   }

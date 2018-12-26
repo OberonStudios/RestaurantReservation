@@ -3,6 +3,7 @@ import Landing from './components/Landing';
 import MenuPage from './components/MenuPage';
 import Login from './components/login';
 import Profile from './components/profile';
+import Navbar from './components/Navbar';
 import {BrowserRouter,Route} from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from './Actions';
@@ -17,7 +18,8 @@ class App extends Component {
     return (
       <div>
         <BrowserRouter>
-          <div>
+          <div className="App">
+            <Navbar/>
             <Route exact path='/' component={Landing} />
             <Route exact path='/menu' component={MenuPage} />
             <Route exact path='/login' component={Login} />
