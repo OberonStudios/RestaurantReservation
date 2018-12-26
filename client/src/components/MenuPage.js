@@ -1,11 +1,22 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import MenuItem from './MenuItem';
 
-export default class MenuPage extends Component {
+class MenuPage extends Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      currentPosition: 0
+    }
+  }
+
   render() {
     return (
       <div>
-        tttt
+        <MenuItem/>
       </div>
-    )
+    );
   }
 }
+
+export default MenuPage;
