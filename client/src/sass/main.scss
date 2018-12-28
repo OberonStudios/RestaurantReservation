@@ -12,7 +12,6 @@ html,body{
     font-size: 100%;
     vertical-align: baseline;
     background: transparent;
-    overflow: hidden;
 }
 
 //every page will have the side nav, so we use flex and then use column when width is 900px
@@ -43,4 +42,5 @@ $text-dark-3:rgb(94, 94, 94);
 @import "menuItemPicker";
 @import "navbar";
 @import "pages/landing";
+@import "pages/menu";
 @import "pages/page-layout";

@@ -1,0 +1,29 @@
+.menu{
+    width: 85%;
+    min-height: 100vh;
+
+    &__item{
+        display: flex;
+        align-items: center;
+        height: 70%;
+        padding: 0 1rem;
+
+        &--text{
+            height: 60%;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex: 2;
+            text-align: center;
+            justify-content: space-around;
+        }
+
+        &--image{
+            flex: 3;
+
+            img{
+                border-radius: 1rem;
+            }
+        }
+    }
+}

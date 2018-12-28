@@ -29,6 +29,7 @@ class MenuPage extends Component {
       return (
         <li className="menuSelector__item" onClick={() => this.changeCurrentPosition(item.id)}>
           <img src={item.image} />
+          <p>{item.name}</p>
         </li>
       )
     })
@@ -36,7 +37,7 @@ class MenuPage extends Component {
 
   render() {
     return (
-      <div>
+      <div className="menu">
         {this.renderMenuList()}
         <ul className="menuSelector">
           {this.renderItemPicker()}
