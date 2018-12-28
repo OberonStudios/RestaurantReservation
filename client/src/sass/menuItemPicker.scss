@@ -1,0 +1,11 @@
+.menuSelector{
+    display: flex;
+
+    &__item{
+        img{
+            height: 9rem;
+            width: 9rem;
+            border-radius: 100%;
+        }
+    }
+}
