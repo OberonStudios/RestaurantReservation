@@ -7,6 +7,11 @@
     border-top: .1rem solid $primary-1;
     border-bottom: .1rem solid $primary-1;
 
+    @media only screen and (max-width: 900px) {
+        flex: 3;
+        padding: 0;
+    }
+
     &__item{
         display: flex;
         flex-direction: column;
@@ -22,12 +27,17 @@
         &:hover{
             background: $primary-1;
             color: $text-dark-1;
+
+            img{
+                border-radius: 0;
+            }
         }
 
         img{
             height: 10rem;
             width: 10rem;
             border-radius: 100%;
+            transition: all .5s;
         }
     }
 }
