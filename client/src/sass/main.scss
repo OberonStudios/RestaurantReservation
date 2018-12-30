@@ -12,6 +12,7 @@ html,body{
     font-size: 100%;
     vertical-align: baseline;
     background: transparent;
+    //overflow: hidden;
 }
 
 //every page will have the side nav, so we use flex and then use column when width is 900px
@@ -31,8 +32,8 @@ $primary-5: rgb(59, 119, 82);
 
 //===TEXT COLORS===
 $text-1: rgb(190, 190, 190);
-$text-1: rgb(170, 170, 170);
-$text-1: rgb(133, 133, 133);
+$text-2: rgb(170, 170, 170);
+$text-3: rgb(133, 133, 133);
 
 $text-dark-1: rgb(41, 41, 41);
 $text-dark-2:rgb(63, 63, 63);

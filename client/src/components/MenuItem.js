@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class MenuItem extends Component {
   render() {
     const meal = this.props.meal;
-    const ingredientList = meal.ingredients.join(",");
+
     return (
       <div className="menu__item">
         <div className="menu__item--text">
