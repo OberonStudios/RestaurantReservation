@@ -10,8 +10,16 @@
     flex-direction: column;
     align-items: center;
     padding: 3rem;
+    min-height: 50vh;
 
     .media-content{
         text-align: center;
     }
+}
+
+.mealPicker{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
 }
