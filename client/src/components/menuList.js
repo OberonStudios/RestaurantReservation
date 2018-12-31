@@ -5,7 +5,8 @@ export const menuList = [
         calories: "870 calories",
         ingredients: ["Sweet Potato", "Pineapple", "Jalapeno", "Ground Pork", "Monterey Jack Cheese", "Potato Buns", "Barbecue Sauce"],
         image: "https://i.imgur.com/St07YG7.jpg",
-        id: 0
+        id: 0,
+        price: 15
     },
     {
         name: "Tex-Mex Cheese-Stuffed Burgers",
@@ -13,7 +14,8 @@ export const menuList = [
         calories: "890 calories",
         ingredients: ["Potatoes", "Tomatoes", "Cilantro", "Southwest Spice", "Ground Beef", "Monterey Jack Cheese", "Potato Buns", "Sour Cream", "Hot Sauce"],
         image: "https://i.imgur.com/tRZB1D1.jpg",
-        id: 1
+        id: 1,
+        price: 17
     },
     {
         name: "Fiesta Chicken Tacos",
@@ -21,7 +23,8 @@ export const menuList = [
         calories: "650 calories",
         ingredients: ["Lime", "Jalapeno", "Red Cabbage", "Apple, Scallions", "Chicken Stir-Fry", "Southwest Spice Blend", "Sour Cream", "Flour Tortilla, Cilantro"],
         image: "https://i.imgur.com/rJ9ms5S.jpg",
-        id: 2
+        id: 2,
+        price: 20
     },
     {
         name: "Apricot Balsamic-Glazed Pork Tenderloin",
@@ -29,7 +32,8 @@ export const menuList = [
         calories: "710 calories",
         ingredients: ["Ginger", "Shallot", "Pork Tenderloin", "Chicken Stock Concentrate", "Jasmine Rice", "Fry Seasoning", "Apricot Jam", "Balsamic Vinegar", "Green Beans", "Sesame Oil"],
         image: "https://i.imgur.com/li3innT.jpg",
-        id: 3
+        id: 3,
+        price: 24
     },
     {
         name: "Lemon Pepper Chicken Linguine",
@@ -37,6 +41,7 @@ export const menuList = [
         calories: "730 calories",
         ingredients: ["Pepercorns", "Lemon, Garlic", "Linguine", "Baby Spinach", "Chicken Breasts", "Parmesan Cheese"],
         image: "https://i.imgur.com/IE3NUsz.jpg",
-        id: 4
+        id: 4,
+        price: 15
     }
 ];

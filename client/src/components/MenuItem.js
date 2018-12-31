@@ -8,6 +8,7 @@ export default class MenuItem extends Component {
       <div className="menu__item">
         <div className="menu__item--text">
           <h3>{meal.name}</h3>
+          <h6>${meal.price}</h6>
           <p>{meal.calories}</p>
           <p>{meal.ingredients.length} Ingredients:</p>
           <p>{meal.ingredients.join(", ")}</p>
