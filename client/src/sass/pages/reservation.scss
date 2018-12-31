@@ -1,0 +1,17 @@
+.reservation{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reservation-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem;
+
+    .media-content{
+        text-align: center;
+    }
+}
