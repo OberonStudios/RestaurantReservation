@@ -5,6 +5,7 @@ class Reservation extends Component {
         super(props);
 
         this.state = {
+            modalOpen: false,
             personCount: 0,
             totalCost: 0,
             meals: []
@@ -12,6 +13,7 @@ class Reservation extends Component {
 
         this.addMeal = this.addMeal.bind(this);
         this.changedPersonCount = this.changedPersonCount.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
         this.updateMenuSelect = this.updateMenuSelect.bind(this);
         this.updateTotal = this.updateTotal.bind(this);
     }
@@ -33,6 +35,10 @@ class Reservation extends Component {
     changedPersonCount(e) {
         //reset meals array when count changes
         this.setState({ personCount: e.target.value, meals: [] });
+    }
+
+    toggleModal(modal){
+        this.setState({ modalOpen: modal});
     }
 
     updateMenuSelect() {
@@ -75,6 +81,18 @@ class Reservation extends Component {
     render() {
         return (
             <div className="container reservation">
+
+                <div style={{ alignItems: "center" }} class={`modal ${this.state.modalOpen ? `is-active` : ''}`}>
+                    <div class="modal-background"></div>
+                    <div class="modal-card">
+                        <div className="modal-card-body reservation-confirmation-modal">
+                            <h3>Hello</h3>
+                            <button className="button" onClick={() => this.toggleModal(false)}>Open Modal</button>
+                        </div>
+                    </div>
+                    <button class="modal-close is-large" aria-label="close" onClick={() => this.toggleModal(false)}></button>
+                </div>
+
                 <div className="card reservation-card">
                     <div className="media-content reservation-card__text">
                         <p className="title is-4">Select amount of people</p>
@@ -95,12 +113,7 @@ class Reservation extends Component {
                     {this.updateMenuSelect()}
                     {this.updateTotal()}
 
-                    <div class="modal">
-                        <div class="modal-background"></div>
-                        <div class="modal-content">
-                        </div>
-                        <button class="modal-close is-large" aria-label="close"></button>
-                    </div>
+                    <button className="button" onClick={() => this.toggleModal(true)}>Open Modal</button>
                 </div>
 
             </div>
