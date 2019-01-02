@@ -8,7 +8,6 @@ class Reservation extends Component {
         this.state = {
             modalOpen: false,
             personCount: 0,
-            totalCost: 0,
             meals: []
         }
 
@@ -95,6 +94,7 @@ class Reservation extends Component {
                 <ConfirmationModal
                     modalOpen={this.state.modalOpen}
                     toggleModal={this.toggleModal}
+                    confirmation={this.state}
                 />
 
                 <div className="card reservation-card">
