@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ConfirmationModal from './ConfimationModal';
 
 class Reservation extends Component {
     constructor(props) {
@@ -41,7 +42,7 @@ class Reservation extends Component {
     //checks to see if user finished picking all meals for each person
     checkForAllComplete(){
         if(this.state.personCount === this.state.meals.length && (this.state.personCount !== 0 && this.state.meals.length !== 0)){
-            return (<button className="button" onClick={() => this.toggleModal(true)}>Open Modal</button>);
+            return (<button className="button" onClick={() => this.toggleModal(true)}>Confirm Reservation</button>);
         }
     }
 
@@ -91,16 +92,10 @@ class Reservation extends Component {
         return (
             <div className="container reservation">
 
-                <div class={`modal ${this.state.modalOpen ? `is-active` : ''}`}>
-                    <div class="modal-background"></div>
-                    <div class="modal-card">
-                        <div className="modal-card-body reservation-confirmation-modal">
-                            <h3>Hello</h3>
-                            <button className="button" onClick={() => this.toggleModal(false)}>Open Modal</button>
-                        </div>
-                    </div>
-                    <button class="modal-close is-large" aria-label="close" onClick={() => this.toggleModal(false)}></button>
-                </div>
+                <ConfirmationModal
+                    modalOpen={this.state.modalOpen}
+                    toggleModal={this.toggleModal}
+                />
 
                 <div className="card reservation-card">
                     <div className="media-content reservation-card__text">
