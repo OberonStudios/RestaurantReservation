@@ -13,6 +13,7 @@ class Reservation extends Component {
 
         this.addMeal = this.addMeal.bind(this);
         this.changedPersonCount = this.changedPersonCount.bind(this);
+        this.checkForAllComplete = this.checkForAllComplete.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
         this.updateMenuSelect = this.updateMenuSelect.bind(this);
         this.updateTotal = this.updateTotal.bind(this);
@@ -34,20 +35,27 @@ class Reservation extends Component {
 
     changedPersonCount(e) {
         //reset meals array when count changes
-        this.setState({ personCount: e.target.value, meals: [] });
+        this.setState({ personCount: Number(e.target.value), meals: []});
     }
 
-    toggleModal(modal){
-        this.setState({ modalOpen: modal});
+    //checks to see if user finished picking all meals for each person
+    checkForAllComplete(){
+        if(this.state.personCount === this.state.meals.length && (this.state.personCount !== 0 && this.state.meals.length !== 0)){
+            return (<button className="button" onClick={() => this.toggleModal(true)}>Open Modal</button>);
+        }
+    }
+
+    toggleModal(modal) {
+        this.setState({ modalOpen: modal });
     }
 
     updateMenuSelect() {
         const menuSelector = [];
         for (let i = 0; i < this.state.personCount; i++) {
             menuSelector.push(
-                <div className="select is-danger meal">
+                <div className="select is-danger meal" key={`${i}-${this.state.personCount}`}>
                     <select onChange={this.addMeal} name={i}>
-                        <option value={0}>Meal #{i + 1}</option>
+                        <option value={0} disabled selected>Meal #{i + 1}</option>
                         <option value={15}>Cheesy Stuffed BBQ Pork Burgers</option>
                         <option value={17}>Tex-Mex Cheese-Stuffed Burgers</option>
                         <option value={20}>Fiesta Chicken Tacos</option>
@@ -68,7 +76,8 @@ class Reservation extends Component {
     updateTotal() {
         let total = 0;
         for (let i = 0; i < this.state.meals.length; i++) {
-            total += this.state.meals[i].price;
+            if (this.state.meals[i])
+                total += this.state.meals[i].price;
         }
 
         if (total) {
@@ -82,7 +91,7 @@ class Reservation extends Component {
         return (
             <div className="container reservation">
 
-                <div style={{ alignItems: "center" }} class={`modal ${this.state.modalOpen ? `is-active` : ''}`}>
+                <div class={`modal ${this.state.modalOpen ? `is-active` : ''}`}>
                     <div class="modal-background"></div>
                     <div class="modal-card">
                         <div className="modal-card-body reservation-confirmation-modal">
@@ -113,7 +122,8 @@ class Reservation extends Component {
                     {this.updateMenuSelect()}
                     {this.updateTotal()}
 
-                    <button className="button" onClick={() => this.toggleModal(true)}>Open Modal</button>
+                    {this.checkForAllComplete()}
+
                 </div>
 
             </div>
