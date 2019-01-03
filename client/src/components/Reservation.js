@@ -89,7 +89,7 @@ class Reservation extends Component {
 
     render() {
         return (
-            <div className="container reservation">
+            <div className="reservation">
 
                 <ConfirmationModal
                     modalOpen={this.state.modalOpen}
