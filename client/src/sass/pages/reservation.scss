@@ -4,14 +4,23 @@
     align-items: center;
     justify-content: center;
     margin: 0 auto;
+    width: 85%;
 }
 
 .reservation-card{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding: 3rem;
     min-height: 60vh;
+
+    &__text{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 
     @media only screen and (max-width: 900px) {
         width: 100%;
@@ -19,7 +28,7 @@
     }
 
     @media only screen and (max-width: 600px) {
-        padding: 0rem;
+        padding: 0rem 1.5rem;
     }
 
     .media-content{
@@ -30,7 +39,7 @@
 .mealPicker{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     padding: 5rem;
 
     @media only screen and (max-width: 900px) {
@@ -39,6 +48,7 @@
 
     @media only screen and (max-width: 600px) {
         padding: 0rem;
+        width: 75%;
     }
 }
 

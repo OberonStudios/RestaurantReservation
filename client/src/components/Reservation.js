@@ -35,12 +35,12 @@ class Reservation extends Component {
 
     changedPersonCount(e) {
         //reset meals array when count changes
-        this.setState({ personCount: Number(e.target.value), meals: []});
+        this.setState({ personCount: Number(e.target.value), meals: [] });
     }
 
     //checks to see if user finished picking all meals for each person
-    checkForAllComplete(){
-        if(this.state.personCount === this.state.meals.length && (this.state.personCount !== 0 && this.state.meals.length !== 0)){
+    checkForAllComplete() {
+        if (this.state.personCount === this.state.meals.length && (this.state.personCount !== 0 && this.state.meals.length !== 0)) {
             return (<button className="button" onClick={() => this.toggleModal(true)}>Confirm Reservation</button>);
         }
     }
@@ -102,6 +102,7 @@ class Reservation extends Component {
                         <p className="title is-4">Select amount of people</p>
                         <p className="subtitle is-6">Note: Minimum amount of people is 2, and maximum is 7</p>
                     </div>
+
                     <div className="select is-danger">
                         <select onChange={this.changedPersonCount}>
                             <option>Person Count</option>
