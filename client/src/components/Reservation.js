@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ConfirmationModal from './ConfimationModal';
+import { DateInput } from 'semantic-ui-calendar-react';
 
 class Reservation extends Component {
     constructor(props) {
@@ -7,6 +8,7 @@ class Reservation extends Component {
 
         this.state = {
             modalOpen: false,
+            date: '',
             personCount: 0,
             meals: []
         }
@@ -15,6 +17,7 @@ class Reservation extends Component {
         this.changedPersonCount = this.changedPersonCount.bind(this);
         this.checkForAllComplete = this.checkForAllComplete.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
+        this.onChangeDate = this.onChangeDate.bind(this);
         this.updateMenuSelect = this.updateMenuSelect.bind(this);
         this.updateTotal = this.updateTotal.bind(this);
     }
@@ -33,6 +36,12 @@ class Reservation extends Component {
         this.setState({ meals: updatedMeals }, console.log(this.state.meals));
     }
 
+    addDays() {
+        var result = new Date();
+        result.setDate(result.getDate() + 15);
+        return result;
+    }
+
     changedPersonCount(e) {
         //reset meals array when count changes
         this.setState({ personCount: Number(e.target.value), meals: [] });
@@ -41,13 +50,21 @@ class Reservation extends Component {
     //checks to see if user finished picking all meals for each person
     checkForAllComplete() {
         if (this.state.personCount === this.state.meals.length && (this.state.personCount !== 0 && this.state.meals.length !== 0)) {
-            return (<button className="button" onClick={() => this.toggleModal(true)}>Confirm Reservation</button>);
+            return (
+                <button className="button" onClick={() => this.toggleModal(true)}>Confirm Reservation</button>
+            );
         }
     }
 
     toggleModal(modal) {
         this.setState({ modalOpen: modal });
     }
+
+    onChangeDate = (event, {name, value}) => {
+        if (this.state.hasOwnProperty(name)) {
+          this.setState({ [name]: value });
+        }
+      }
 
     updateMenuSelect() {
         const menuSelector = [];
@@ -93,6 +110,7 @@ class Reservation extends Component {
 
                 <ConfirmationModal
                     modalOpen={this.state.modalOpen}
+                    value={this.state.date}
                     toggleModal={this.toggleModal}
                     confirmation={this.state}
                 />
@@ -101,6 +119,16 @@ class Reservation extends Component {
                     <div className="media-content reservation-card__text">
                         <p className="title is-4">Select amount of people</p>
                         <p className="subtitle is-6">Note: Minimum amount of people is 2, and maximum is 7</p>
+                        <form>
+                            <DateInput
+                                name="date"
+                                placeholder="Date"
+                                iconPosition="left"
+                                value={this.state.date}
+                                style={{width: '100%', cursor: 'pointer'}}
+                                onChange={this.onChangeDate}
+                            />
+                        </form>
                     </div>
 
                     <div className="select is-danger">
