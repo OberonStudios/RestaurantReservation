@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ConfirmationModal from './ConfimationModal';
-import { DateInput } from 'semantic-ui-calendar-react';
 
 class Reservation extends Component {
     constructor(props) {
@@ -60,11 +59,11 @@ class Reservation extends Component {
         this.setState({ modalOpen: modal });
     }
 
-    onChangeDate = (event, {name, value}) => {
+    onChangeDate = (event, { name, value }) => {
         if (this.state.hasOwnProperty(name)) {
-          this.setState({ [name]: value });
+            this.setState({ [name]: value });
         }
-      }
+    }
 
     updateMenuSelect() {
         const menuSelector = [];
@@ -119,16 +118,6 @@ class Reservation extends Component {
                     <div className="media-content reservation-card__text">
                         <p className="title is-4">Select amount of people</p>
                         <p className="subtitle is-6">Note: Minimum amount of people is 2, and maximum is 7</p>
-                        <form>
-                            <DateInput
-                                name="date"
-                                placeholder="Date"
-                                iconPosition="left"
-                                value={this.state.date}
-                                style={{width: '100%', cursor: 'pointer'}}
-                                onChange={this.onChangeDate}
-                            />
-                        </form>
                     </div>
 
                     <div className="select is-danger">
@@ -145,7 +134,6 @@ class Reservation extends Component {
 
                     {this.updateMenuSelect()}
                     {this.updateTotal()}
-
                     {this.checkForAllComplete()}
 
                 </div>
