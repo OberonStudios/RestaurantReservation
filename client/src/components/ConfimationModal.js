@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DatePicker from "react-datepicker";
+import DateTimePicker from 'react-datetime-picker';
 import "react-datepicker/dist/react-datepicker.css";
 
 class ConfimationModal extends Component {
@@ -7,9 +7,21 @@ class ConfimationModal extends Component {
         super(props);
 
         this.state = {
-            datePicked: "",
+            datePicked: new Date(),
             userPickedDate: false
         }
+
+        this.handleDateChange = this.handleDateChange.bind(this);
+    }
+
+    handleDateChange(e) {
+        this.setState({ datePicked: e }, console.log(this.state))
+    }
+
+    handleMaxDate() {
+        const date = new Date();
+        date.setDate(date.getDate() + 9);
+        return date;
     }
 
     renderMeals() {
@@ -44,8 +56,11 @@ class ConfimationModal extends Component {
                     <div className="modal-card-body reservation-confirmation-modal">
                         <h1 className="is-size-3">Confirmation</h1>
                         <div style={{ border: "1px solid black" }}>
-                            <DatePicker
-                                selected={new Date()}
+                            <DateTimePicker
+                                onChange={this.handleDateChange}
+                                minDate={this.state.datePicked}
+                                maxDate={this.handleMaxDate()}
+                                value={this.state.datePicked}
                             />
                         </div>
 
