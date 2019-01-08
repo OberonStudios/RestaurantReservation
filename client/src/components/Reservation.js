@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ConfirmationModal from './ConfimationModal';
+import DateTimePicker from 'react-datetime-picker';
 
 class Reservation extends Component {
     constructor(props) {
@@ -9,12 +10,15 @@ class Reservation extends Component {
             modalOpen: false,
             date: '',
             personCount: 0,
-            meals: []
+            meals: [],
+            datePicked: "",
+            userPickedDate: false
         }
 
         this.addMeal = this.addMeal.bind(this);
         this.changedPersonCount = this.changedPersonCount.bind(this);
         this.checkForAllComplete = this.checkForAllComplete.bind(this);
+        this.handleDateChange = this.handleDateChange.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
         this.onChangeDate = this.onChangeDate.bind(this);
         this.updateMenuSelect = this.updateMenuSelect.bind(this);
@@ -53,6 +57,16 @@ class Reservation extends Component {
                 <button className="button" onClick={() => this.toggleModal(true)}>Confirm Reservation</button>
             );
         }
+    }
+
+    handleDateChange(e) {
+        this.setState({ datePicked: e, userPickedDate: true }, console.log(this.state))
+    }
+
+    handleMaxDate() {
+        const date = new Date();
+        date.setDate(date.getDate() + 9);
+        return date;
     }
 
     toggleModal(modal) {
@@ -115,22 +129,39 @@ class Reservation extends Component {
                 />
 
                 <div className="card reservation-card">
-                    <div className="media-content reservation-card__text">
-                        <p className="title is-4">Select amount of people</p>
-                        <p className="subtitle is-6">Note: Minimum amount of people is 2, and maximum is 7</p>
-                    </div>
+                    <div className="media-content card-section">
+                        <p className="title is-4">Pick a date and time</p>
+                        <p className="subtitle is-6">Note: You're only able to reservation a maximum 10 days in advanced</p>
 
-                    <div className="select is-danger">
-                        <select onChange={this.changedPersonCount}>
-                            <option>Person Count</option>
-                            <option value={2}>2</option>
-                            <option value={3}>3</option>
-                            <option value={4}>4</option>
-                            <option value={5}>5</option>
-                            <option value={6}>6</option>
-                            <option value={7}>7</option>
-                        </select>
+                        <DateTimePicker
+                            onChange={this.handleDateChange}
+                            minDate={new Date()}
+                            maxDate={this.handleMaxDate()}
+                            value={this.state.datePicked}
+                        />
+
                     </div>
+                    {
+                        this.state.userPickedDate ?
+                        (<React.Fragment>
+                        <div className="media-content reservation-card__text card-section">
+                            <p className="title is-4">Select amount of people</p>
+                            <p className="subtitle is-6">Note: Minimum amount of people is 2, and maximum is 7</p>
+                        </div>
+
+                        <div className="select is-danger">
+                            <select onChange={this.changedPersonCount}>
+                                <option>Person Count</option>
+                                <option value={2}>2</option>
+                                <option value={3}>3</option>
+                                <option value={4}>4</option>
+                                <option value={5}>5</option>
+                                <option value={6}>6</option>
+                                <option value={7}>7</option>
+                            </select>
+                        </div>
+                        </React.Fragment>) : ""
+                    }
 
                     {this.updateMenuSelect()}
                     {this.updateTotal()}
