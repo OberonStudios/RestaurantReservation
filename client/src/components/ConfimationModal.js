@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import * as actions from '../Actions';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class ConfimationModal extends Component {
 
@@ -26,6 +29,11 @@ class ConfimationModal extends Component {
         return <p>Total Price: ${totalPrice}</p>
     }
 
+    submitReservation(data){
+        this.props.createReservation(data)
+            .then(this.props.history.push("/"));
+    }
+
     render() {
         return (
             <div class={`modal ${this.props.modalOpen ? `is-active` : ''} confirmationModal`}>
@@ -39,7 +47,7 @@ class ConfimationModal extends Component {
                         </ul>
 
                         {this.renderTotalPrice()}
-                        <button className="button" onClick={() => this.props.toggleModal(false)}>Reserve</button>
+                        <button className="button" onClick={() => this.submitReservation(this.props.confirmation)}>Reserve</button>
                         <button className="button" onClick={() => this.props.toggleModal(false)}>Close</button>
                     </div>
                 </div>
@@ -50,4 +58,4 @@ class ConfimationModal extends Component {
     }
 }
 
-export default ConfimationModal;
+export default withRouter(connect(null, actions)(ConfimationModal));

@@ -1,5 +1,7 @@
 const passport = require('passport');
 const express = require('express');
+const mongoose = require('mongoose');
+const User = mongoose.model('user');
 const app = express();
 
 module.exports = app => {
@@ -19,5 +21,14 @@ module.exports = app => {
 
     app.get('/api/current_user', (req, res) => {
         res.send(req.user);
+    });
+
+    app.post('/api/createreservation', (req, res) => {
+        console.log(req.body)
+        User.findById(req.user._id, function (err, user) {
+            user.reservations.push(req.body);
+            user.save();
+        })
+        res.end();
     });
 };
