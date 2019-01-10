@@ -31,4 +31,13 @@ module.exports = app => {
         })
         res.end();
     });
+
+    app.post('/api/removereservation', (req, res) => {
+        console.log(req.body)
+        User.findById(req.user._id, function (err, user) {
+            user.reservations = user.reservations.filter(item => item.uuid !== req.body.uuid);
+            user.save();
+        })
+        res.end();
+    })
 };

@@ -1,46 +1,49 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+
+const navLinkStyle = {
+  color: "white",
+  background: "linear-gradient(to top left, rgb(255, 29, 86), rgb(218, 65, 111))"
+}
 
 class Navbar extends Component {
   //if user is not logged in, return login link
   renderAuthentication() {
     if (!this.props.auth) {
       return (
-        <>
-          <a activeStyle={{ color: "white", background: "linear-gradient(to top left, rgb(255, 29, 86), rgb(218, 65, 111))" }} href="/auth/google" exact>
+          <a href="/auth/google">
             <i className="fas fa-home"></i> Login
           </a>
-        </>
       );
     }
     //otherwise return a link to user's dashboard, and option to logout
     else {
       return (
-        <>
-          <NavLink activeStyle={{ color: "white", background: "linear-gradient(to top left, rgb(255, 29, 86), rgb(218, 65, 111))" }} to="/reservation" exact>
+        <Fragment>
+          <NavLink activeStyle={navLinkStyle} exact to="/reservation">
             <i className="far fa-check-square"></i> Make Reservation
           </NavLink>
-          <NavLink activeStyle={{ color: "white", background: "linear-gradient(to top left, rgb(255, 29, 86), rgb(218, 65, 111))" }} to="/dashboard" exact>
+          <NavLink activeStyle={navLinkStyle} exact to="/dashboard">
             <i className="fas fa-home"></i> Dashboard
           </NavLink>
-          <a activeStyle={{ color: "white", background: "linear-gradient(to top left, rgb(255, 29, 86), rgb(218, 65, 111))" }} href="/api/logout" exact>
+          <a href="/api/logout">
             <i className="fas fa-home"></i> Logout
           </a>
-        </>
+        </Fragment>
       )
     }
   }
   render() {
     return (
       <div className="navbar">
-        <NavLink activeStyle={{ color: "white", background: "linear-gradient(to top left, rgb(255, 29, 86), rgb(218, 65, 111))" }} to="/" exact>
+        <NavLink activeStyle={navLinkStyle} exact to="/">
           <i className="fas fa-home"></i> Home
         </NavLink>
-        <NavLink activeStyle={{ color: "white", background: "linear-gradient(to top left, rgb(255, 29, 86), rgb(218, 65, 111))" }} to="/menu" exact>
+        <NavLink activeStyle={navLinkStyle} exact to="/menu">
           <i className="fas fa-utensils"></i> Menu
         </NavLink>
-        <NavLink activeStyle={{ color: "white", background: "linear-gradient(to top left, rgb(255, 29, 86), rgb(218, 65, 111))" }} to="/about" exact>
+        <NavLink activeStyle={navLinkStyle} exact to="/about">
           <i className="fas fa-info-circle"></i> About Us
         </NavLink>
         {this.renderAuthentication()}
@@ -51,8 +54,10 @@ class Navbar extends Component {
 
 function mapStateToProps(state) {
   return {
-    auth: state.auth
-  }
+      auth: state.auth
+  };
 }
 
-export default connect(mapStateToProps)(Navbar);
+//{pure: false} allows navlink to work properly
+//activestyle will not work without it
+export default connect(mapStateToProps, null, null, { pure: false })(Navbar);

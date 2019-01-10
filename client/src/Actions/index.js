@@ -9,3 +9,7 @@ export const fetchUser = () => async (dispatch) => {
 export const createReservation = (data) => async (dispatch) => {
     axios.post("/api/createreservation", data);
 }
+
+export const removeReservation = (id) => async (dispatch) => {
+    axios.post("/api/removereservation", {uuid: id});
+}

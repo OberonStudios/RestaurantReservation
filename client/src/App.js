@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Landing from './components/Landing';
 import MenuPage from './components/MenuPage';
-import Login from './components/login';
-import Profile from './components/profile';
+import Dashboard from './components/Dashboard';
+import About from './components/About';
 import Navbar from './components/Navbar';
 import Reservation from './components/Reservation';
 import {BrowserRouter,Route} from 'react-router-dom';
@@ -25,8 +25,8 @@ class App extends Component {
             <Route exact path='/' component={Landing} />
             <Route exact path='/menu' component={MenuPage} />
             <Route exact path='/reservation' component={Reservation}/>
-            <Route exact path='/login' component={Login} />
-            <Route exact path='/profile' component={Profile} />
+            <Route exact path='/dashboard' component={Dashboard} />
+            <Route exact path='/about' component={About}/>
           </div>
         </BrowserRouter>
       </div>

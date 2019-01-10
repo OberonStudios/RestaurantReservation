@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ConfirmationModal from './ConfimationModal';
 import DateTimePicker from 'react-datetime-picker';
+import uuid from 'uuid';
+import authenticationHOC from './authenticationHOC';
 
 class Reservation extends Component {
     constructor(props) {
@@ -8,11 +10,13 @@ class Reservation extends Component {
 
         this.state = {
             modalOpen: false,
-            date: '',
+            totalPrice: 0,
             personCount: 0,
             meals: [],
+            //date and time that user picks for reservation
             datePicked: "",
-            userPickedDate: false
+            userPickedDate: false,
+            uuid: uuid()
         }
 
         this.addMeal = this.addMeal.bind(this);
@@ -36,6 +40,7 @@ class Reservation extends Component {
             price: Number(e.target.value)
         }
         //update the state
+        this.updateTotal();
         this.setState({ meals: updatedMeals }, console.log(this.state.meals));
     }
 
@@ -47,6 +52,7 @@ class Reservation extends Component {
 
     changedPersonCount(e) {
         //reset meals array when count changes
+        this.updateTotal();
         this.setState({ personCount: Number(e.target.value), meals: [] });
     }
 
@@ -111,9 +117,7 @@ class Reservation extends Component {
         }
 
         if (total) {
-            return (
-                <h3>Total Cost: {total}</h3>
-            )
+            this.setState({ totalPrice: total });
         }
     }
 
@@ -164,7 +168,6 @@ class Reservation extends Component {
                     }
 
                     {this.updateMenuSelect()}
-                    {this.updateTotal()}
                     {this.checkForAllComplete()}
 
                 </div>
@@ -174,4 +177,4 @@ class Reservation extends Component {
     }
 }
 
-export default Reservation;
+export default authenticationHOC(Reservation);
