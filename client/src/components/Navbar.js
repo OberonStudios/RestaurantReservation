@@ -25,10 +25,10 @@ class Navbar extends Component {
             <i className="far fa-check-square"></i> Make Reservation
           </NavLink>
           <NavLink activeStyle={navLinkStyle} exact to="/dashboard">
-            <i className="fas fa-home"></i> Dashboard
+            <i class="fas fa-columns"></i> Dashboard
           </NavLink>
           <a href="/api/logout">
-            <i className="fas fa-home"></i> Logout
+            <i class="fas fa-sign-out-alt"></i> Logout
           </a>
         </Fragment>
       )
@@ -42,9 +42,6 @@ class Navbar extends Component {
         </NavLink>
         <NavLink activeStyle={navLinkStyle} exact to="/menu">
           <i className="fas fa-utensils"></i> Menu
-        </NavLink>
-        <NavLink activeStyle={navLinkStyle} exact to="/about">
-          <i className="fas fa-info-circle"></i> About Us
         </NavLink>
         {this.renderAuthentication()}
       </div>

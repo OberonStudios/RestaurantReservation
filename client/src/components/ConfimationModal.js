@@ -31,7 +31,7 @@ class ConfimationModal extends Component {
 
     submitReservation(data){
         this.props.createReservation(data)
-            .then(this.props.history.push("/"));
+            .then(this.props.history.push("/dashboard"));
     }
 
     render() {

@@ -10,16 +10,22 @@ class Dashboard extends Component {
 
     getReservationHistory(){
         if(this.props.auth && this.props.auth.reservations.length > 0){
-            return this.props.auth.reservations.map(reservation => {
+            return this.props.auth.reservations.map((reservation, index) => {
                 return(
-                    <li>
-                        <h4>Date: {reservation.datePicked}</h4>
+                    <li className="dashboard__item">
+                        <p className="is-size-5 is-size-6-mobile">Reservation #{index+1}</p>
+                        <p>Date: {reservation.datePicked}</p>
                         <p>Reservation for {reservation.personCount} people</p>
                         <p>Total Price: ${reservation.totalPrice}</p>
                         <button className="button" onClick={() => this.removeReservation(reservation.uuid)}>Remove Reservation History</button>
                     </li>
                 )
             })
+        }
+        else{
+            return(
+                <li className="dashboard__item">Your past and/or upcoming reservations will be dispayed here</li>
+            )
         }
     }
 
@@ -32,12 +38,12 @@ class Dashboard extends Component {
         if(this.props.auth){
             const user = this.props.auth;
             return(
-                <div>
-                    <h3>User: {user.displayName}</h3>
-                    <ul>
+                <>
+                    <h3 className="is-size-4 is-size-5-mobile">User: {user.displayName}</h3>
+                    <ul className="dashboard__list">
                         {this.getReservationHistory()}
                     </ul>
-                </div>
+                </>
             )
         }
         else{
@@ -51,7 +57,7 @@ class Dashboard extends Component {
 
     render() {
         return (
-            <div>
+            <div className="dashboard">
                 {this.renderUserInfo()}
             </div>
         );
