@@ -1,5 +1,5 @@
 const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const GoogleStrategy = require('passport-google-oauth20');
 const key = require('../config/key.js');
 const mongoose = require('mongoose');
 const User = mongoose.model('user');
@@ -18,8 +18,8 @@ passport.deserializeUser((id, done) => {
 passport.use(new GoogleStrategy({
     clientID: key.googleClientID,
     clientSecret: key.googleClientSecret,
-    callbackURL: 'https://angelsrestaurantapp.herokuapp.com/auth/google/callback',
-    //callbackURL: '/auth/google/callback',
+    //callbackURL: 'https://angelsrestaurantapp.herokuapp.com/auth/google/callback',
+    callbackURL: '/auth/google/callback',
     proxy: true
 }, (accessToken, refreshToken, profile, done) => {
 
